@@ -1,9 +1,13 @@
+#!/usr/bin/env python2.7
+
 import sys
 from subprocess import *
 import re
 
-#mylist=sys.argv[1]
-mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txttmplist'
+mylist=sys.argv[1]
+
+# Examples
+#mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txttmplist'
 #mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txt'
 # mylist='/home/moisesexpositoalonso/ebio_remote/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txt'
 
@@ -64,6 +68,7 @@ for i in genelistparse:
         	if z[0:2] =="AT":
 	        	atname.write(str("\t".join([chrpos,z])+"\n" ))
 
+genelistparse.close()
 parsedname.close()
 atname.close()
 

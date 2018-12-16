@@ -1,9 +1,11 @@
+#!/usr/bin/env python2.7
+
 import sys
 from subprocess import *
 
-#mylist=sys.argv[1]
+mylist=sys.argv[1]
 #mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txt'
-mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txttmplist'
+#mylist='/ebio/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txttmplist'
 #mylist='/home/moisesexpositoalonso/ebio_remote/abt6_projects9/ath_1001G_image_pheno/experiment_218_droughtgwa/multivargwa/_dLDtopserial/m1d_polqua_LDtop_1_100_gwahits.txt'
 
 
@@ -40,8 +42,8 @@ for i in tmplist_use:
 	if "SNP" in i:
 		pass
 	else:
-		cmd="awk \'{ if ($1 == \"Chr%s\" && $3 ~ \"gene\"  && $4 < %d && $5 > %d && $9 !~ \"ID=Chr\")  print ($1,$3,$4,$5,$9) }\' ../TAIR10_GFF3_genes.gff.txt " %(str(i[0]),int(i[1]),int(i[1]))
-		#print(cmd)
+		cmd="awk \'{ if ($1 == \"Chr%s\" && $3 ~ \"gene\"  && $4 < %d && $5 > %d && $9 !~ \"ID=Chr\")  print ($1,$3,$4,$5,$9) }\' TAIR10_GFF3_genes.gff.txt " %(str(i[0]),int(i[1]),int(i[1]))
+		print(cmd)
 		process = Popen(cmd, stdout=PIPE, stderr=PIPE ,shell=True)
 		stdout = process.communicate()[0]
 		newexcel.append([i[0],i[1], stdout.split(" ")[-1].split("Name=")[-1].replace("\n","").replace(";Index=1","")])
